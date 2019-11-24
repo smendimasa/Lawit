@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using LawIT.Models.LawITContextModels;
 using Microsoft.EntityFrameworkCore;
 using LawIT.BLL;
+using LawIT.Models.CustomClasses;
 
 namespace LawIT.Controllers
 {
@@ -51,76 +52,46 @@ namespace LawIT.Controllers
         {
         }
 
-        public void Search(string input)
+        public List<DocumentResult> Search(string input, int? subtitleId, int? titleId)
         {
             var punctuation = input.Where(Char.IsPunctuation).Distinct().ToArray();
             var tokens = input.Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim(punctuation)).Distinct();
-            var cleanedTokens = tokens.Where(x => !Constants.stopwords.Contains(x)).ToList();
+            var cleanedTokens = tokens.Where(x => !Constants.stopwords.Contains(x.ToLower())).ToList();
             var stemmedTokens = cleanedTokens;
 
             var words = new List<string>();
-
+            // Get all word ids of cleaned token list
             var wordIds = _context.Word.Where(x => words.Contains(x.Word1)).Select(x => x.WordId).ToList();
+            // Generate list od DocumentIds based on words and get the top 10
             var documentIds = _context.DocumentWord.Where(x => wordIds.Contains(x.WordId)).GroupBy(g => g.DocumentId).Select(y => new
             {
                 DocumentId = y.Key,
                 Counts = y.Sum(x => x.Count)
             }).OrderByDescending(c => c.Counts).Take(10).Select(x => x.DocumentId).ToList();
-            var docs = _context.Document.Where(x => documentIds.Contains(x.DocumentId)).Include(i => i.Subtitle).ThenInclude(j => j.Title).Select(y => new
+            List<int> filteredDocs = new List<int>();
+
+            if (subtitleId != null)
             {
-                y.DocumentText,
-                y.Subtitle.SubtitleName,
-                y.Subtitle.SubtitleNumber,
-                y.Subtitle.Title.TitleName,
-                y.Subtitle.Title.TitleNumber
+                filteredDocs = _context.Document.Where(x => documentIds.Contains(x.DocumentId) && x.SubtitleId == subtitleId).Select(x=> x.DocumentId).ToList();
+                    
+            }
+            else if (titleId != null)
+            {
+                filteredDocs = _context.Document.Where(x => documentIds.Contains(x.DocumentId) && x.Subtitle.TitleId == titleId).Select(x => x.DocumentId).ToList();
+            }
+            else
+            {
+                filteredDocs = _context.Document.Where(x => documentIds.Contains(x.DocumentId)).ToList().Select(x => x.DocumentId).ToList();
+            }
+            List<DocumentResult> documents = _context.Document.Where(x=> filteredDocs.Contains(x.DocumentId)).Include(i => i.Subtitle).ThenInclude(j => j.Title).Select(y => new DocumentResult
+            {
+                DocumentText = y.DocumentText,
+                SubtitleName = y.Subtitle.SubtitleName,
+                SubtitleNumber = y.Subtitle.SubtitleNumber,
+                TitleName = y.Subtitle.Title.TitleName,
+                TitleNumber = y.Subtitle.Title.TitleNumber
             }).ToList();
-
-        }
-        public void SearchWithinSubtitle(string input, int subtitleId)
-        {
-            var punctuation = input.Where(Char.IsPunctuation).Distinct().ToArray();
-            var words = input.Split().Select(x => x.Trim(punctuation)).Distinct();
-
-            var wordIds = _context.Word.Where(x => words.Contains(x.Word1)).Select(x => x.WordId).ToList();
-            var documentIds = _context.DocumentWord.Include(i => i.Document.SubtitleId).Where(x => wordIds.Contains(x.WordId) && x.Document.SubtitleId == subtitleId)
-                .GroupBy(g => g.DocumentId).Select(y => new
-                {
-                    DocumentId = y.Key,
-                    Counts = y.Sum(x => x.Count)
-                }).OrderByDescending(c => c.Counts).Take(10).Select(x => x.DocumentId).ToList();
-            var docs = _context.Document.Where(x => documentIds.Contains(x.DocumentId)).Include(i => i.Subtitle).ThenInclude(j => j.Title)
-                .Select(y => new
-                {
-                    y.DocumentText,
-                    y.Subtitle.SubtitleName,
-                    y.Subtitle.SubtitleNumber,
-                    y.Subtitle.Title.TitleName,
-                    y.Subtitle.Title.TitleNumber
-                }).ToList();
-
-        }
-        public void SearchWithinTitle(string input, int titleId)
-        {
-            var punctuation = input.Where(Char.IsPunctuation).Distinct().ToArray();
-            var words = input.Split().Select(x => x.Trim(punctuation)).Distinct();
-
-            var wordIds = _context.Word.Where(x => words.Contains(x.Word1)).Select(x => x.WordId).ToList();
-            var documentIds = _context.DocumentWord.Include(i => i.Document.Subtitle.TitleId).Where(x => wordIds.Contains(x.WordId) && x.Document.Subtitle.TitleId == titleId)
-                .GroupBy(g => g.DocumentId).Select(y => new
-                {
-                    DocumentId = y.Key,
-                    Counts = y.Sum(x => x.Count)
-                }).OrderByDescending(c => c.Counts).Take(10).Select(x => x.DocumentId).ToList();
-            var docs = _context.Document.Where(x => documentIds.Contains(x.DocumentId)).Include(i => i.Subtitle).ThenInclude(j => j.Title)
-                .Select(y => new
-                {
-                    y.DocumentText,
-                    y.Subtitle.SubtitleName,
-                    y.Subtitle.SubtitleNumber,
-                    y.Subtitle.Title.TitleName,
-                    y.Subtitle.Title.TitleNumber
-                }).ToList();
-
+            return documents;
         }
     }
 }
