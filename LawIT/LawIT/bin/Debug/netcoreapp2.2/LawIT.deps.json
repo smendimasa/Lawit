@@ -25,17 +25,38 @@
       "LawIT/1.0.0": {
         "dependencies": {
           "Google.Cloud.Dialogflow.V2": "1.1.0",
+          "Lucene.Net": "4.8.0-beta00006",
+          "Lucene.Net.Analysis.Common": "4.8.0-beta00006",
+          "Lucene.Net.Queries": "4.8.0-beta00006",
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.4"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.4",
+          "NEST": "7.4.1"
         },
         "runtime": {
           "LawIT.dll": {}
         },
         "compile": {
           "LawIT.dll": {}
+        }
+      },
+      "Elasticsearch.Net/7.4.1": {
+        "dependencies": {
+          "System.Buffers": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
+          "System.Reflection.Emit": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Elasticsearch.Net.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.4.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Elasticsearch.Net.dll": {}
         }
       },
       "Google.Api.CommonProtos/1.7.0": {
@@ -257,6 +278,48 @@
           "lib/netstandard2.0/Grpc.Core.Api.dll": {}
         }
       },
+      "Lucene.Net/4.8.0-beta00006": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Lucene.Net.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.8.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Lucene.Net.dll": {}
+        }
+      },
+      "Lucene.Net.Analysis.Common/4.8.0-beta00006": {
+        "dependencies": {
+          "Lucene.Net": "4.8.0-beta00006"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Lucene.Net.Analysis.Common.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.8.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Lucene.Net.Analysis.Common.dll": {}
+        }
+      },
+      "Lucene.Net.Queries/4.8.0-beta00006": {
+        "dependencies": {
+          "Lucene.Net": "4.8.0-beta00006"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Lucene.Net.Queries.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.8.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Lucene.Net.Queries.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Mvc.Core/2.2.5": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.Core": "2.2.0",
@@ -272,7 +335,7 @@
           "Microsoft.Extensions.DependencyModel": "2.1.0",
           "Microsoft.Extensions.FileProviders.Abstractions": "2.2.0",
           "Microsoft.Extensions.Logging.Abstractions": "2.2.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
           "System.Threading.Tasks.Extensions": "4.5.1"
         },
         "runtime": {
@@ -479,6 +542,20 @@
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll": {}
         }
       },
+      "NEST/7.4.1": {
+        "dependencies": {
+          "Elasticsearch.Net": "7.4.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.4.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {}
+        }
+      },
       "NuGet.Frameworks/4.7.0": {
         "dependencies": {
           "NETStandard.Library": "2.0.3"
@@ -614,6 +691,11 @@
         },
         "compile": {
           "lib/netstandard1.0/System.Composition.TypedParts.dll": {}
+        }
+      },
+      "System.Diagnostics.DiagnosticSource/4.5.1": {
+        "compile": {
+          "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
       "System.Linq.Parallel/4.3.0": {
@@ -1069,7 +1151,7 @@
           "Microsoft.Extensions.FileProviders.Physical": "2.2.0",
           "Microsoft.Extensions.Logging.Abstractions": "2.2.0",
           "Microsoft.Extensions.Options": "2.2.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
           "System.Reflection.Metadata": "1.6.0"
         },
         "compile": {
@@ -1130,7 +1212,7 @@
           "Microsoft.Extensions.Hosting.Abstractions": "2.2.0",
           "Microsoft.Extensions.Logging": "2.2.0",
           "Microsoft.Extensions.Options": "2.2.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
           "System.Reflection.Metadata": "1.6.0"
         },
         "compile": {
@@ -1337,7 +1419,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0"
+          "System.Diagnostics.DiagnosticSource": "4.5.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.MiddlewareAnalysis.dll": {}
@@ -1938,7 +2020,7 @@
           "Remotion.Linq": "2.2.0",
           "System.Collections.Immutable": "1.5.0",
           "System.ComponentModel.Annotations": "4.5.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
           "System.Interactive.Async": "3.2.0"
         },
         "compile": {
@@ -2153,7 +2235,7 @@
       },
       "Microsoft.Extensions.DiagnosticAdapter/2.2.0": {
         "dependencies": {
-          "System.Diagnostics.DiagnosticSource": "4.5.0"
+          "System.Diagnostics.DiagnosticSource": "4.5.1"
         },
         "compile": {
           "lib/netcoreapp2.0/Microsoft.Extensions.DiagnosticAdapter.dll": {}
@@ -2567,7 +2649,6 @@
           "ref/netcoreapp2.2/System.Data.dll": {},
           "ref/netcoreapp2.2/System.Diagnostics.Contracts.dll": {},
           "ref/netcoreapp2.2/System.Diagnostics.Debug.dll": {},
-          "ref/netcoreapp2.2/System.Diagnostics.DiagnosticSource.dll": {},
           "ref/netcoreapp2.2/System.Diagnostics.FileVersionInfo.dll": {},
           "ref/netcoreapp2.2/System.Diagnostics.Process.dll": {},
           "ref/netcoreapp2.2/System.Diagnostics.StackTrace.dll": {},
@@ -2951,9 +3032,6 @@
         },
         "compileOnly": true
       },
-      "System.Diagnostics.DiagnosticSource/4.5.0": {
-        "compileOnly": true
-      },
       "System.Diagnostics.FileVersionInfo/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.2.0",
@@ -3162,7 +3240,7 @@
           "Microsoft.NETCore.Platforms": "2.2.0",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
           "System.Diagnostics.Tracing": "4.3.0",
           "System.Globalization": "4.3.0",
           "System.Globalization.Extensions": "4.3.0",
@@ -3778,6 +3856,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Elasticsearch.Net/7.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-A73y3NooG0xS11O6a2bUwYv2TUFkHafbk7Z3C9PwyKmlIq9mBY4H4xtPILQHKcUPI/44bvts1dc4u8talFDy8g==",
+      "path": "elasticsearch.net/7.4.1",
+      "hashPath": "elasticsearch.net.7.4.1.nupkg.sha512"
+    },
     "Google.Api.CommonProtos/1.7.0": {
       "type": "package",
       "serviceable": true,
@@ -3861,6 +3946,27 @@
       "sha512": "sha512-ycWWzeVgVvHfukxORx8kk/SrztyoOTZuweEW5HhJPzNn/7JlqmfCGaaQpa24qMwQv4gB4GMVsZ1W8OkSVO9sgw==",
       "path": "grpc.core.api/1.22.0",
       "hashPath": "grpc.core.api.1.22.0.nupkg.sha512"
+    },
+    "Lucene.Net/4.8.0-beta00006": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-x0/Ks0fENj5mkPpxNUIHJvmjlZ5PUfc+O3076kzbYf6NR6sejeIHT5paSn9SJMfqwhEKbwHpJsRkxLInhA0UJw==",
+      "path": "lucene.net/4.8.0-beta00006",
+      "hashPath": "lucene.net.4.8.0-beta00006.nupkg.sha512"
+    },
+    "Lucene.Net.Analysis.Common/4.8.0-beta00006": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XeROES0bwCxCsOVj0T97oH5R4Tubt+ef0K+jkDgIjnGlbMdWwyFGXkDC7tslJOLmpr45Xi2cOrk3Gg8NGGYSIw==",
+      "path": "lucene.net.analysis.common/4.8.0-beta00006",
+      "hashPath": "lucene.net.analysis.common.4.8.0-beta00006.nupkg.sha512"
+    },
+    "Lucene.Net.Queries/4.8.0-beta00006": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WRVDBlzsVVP2jHtnO66BGfjMmMlhDTXAAk8vmLdHF31WPr9xl6VSfR1kPwXhGwWJMSP9eP0GMXkUVS1nV/f16A==",
+      "path": "lucene.net.queries/4.8.0-beta00006",
+      "hashPath": "lucene.net.queries.4.8.0-beta00006.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Mvc.Core/2.2.5": {
       "type": "package",
@@ -3953,6 +4059,13 @@
       "path": "microsoft.visualstudio.web.codegenerators.mvc/2.2.4",
       "hashPath": "microsoft.visualstudio.web.codegenerators.mvc.2.2.4.nupkg.sha512"
     },
+    "NEST/7.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Rm3L79opLCLT7Ra72ExEbw7Y4AhFIf5OrtpBcMQnkmjT3haYBFnchrv/K6uKh8ES6aAYGg7ndnzIeUmuqAk66g==",
+      "path": "nest/7.4.1",
+      "hashPath": "nest.7.4.1.nupkg.sha512"
+    },
     "NuGet.Frameworks/4.7.0": {
       "type": "package",
       "serviceable": true,
@@ -4001,6 +4114,13 @@
       "sha512": "sha512-0Zae/FtzeFgDBBuILeIbC/T9HMYbW4olAmi8XqqAGosSOWvXfiQLfARZEhiGd0LVXaYgXr0NhxiU1LldRP1fpQ==",
       "path": "system.composition.typedparts/1.0.31",
       "hashPath": "system.composition.typedparts.1.0.31.nupkg.sha512"
+    },
+    "System.Diagnostics.DiagnosticSource/4.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zCno/m44ymWhgLFh7tELDG9587q0l/EynPM0m4KgLaWQbz/TEKvNRX2YT5ip2qXW/uayifQ2ZqbnErsKJ4lYrQ==",
+      "path": "system.diagnostics.diagnosticsource/4.5.1",
+      "hashPath": "system.diagnostics.diagnosticsource.4.5.1.nupkg.sha512"
     },
     "System.Linq.Parallel/4.3.0": {
       "type": "package",
@@ -5443,13 +5563,6 @@
       "sha512": "sha512-ZUhUOdqmaG5Jk3Xdb8xi5kIyQYAA4PnTNlHx1mu9ZY3qv4ELIdKbnL/akbGaKi2RnNUWaZsAs31rvzFdewTj2g==",
       "path": "system.diagnostics.debug/4.3.0",
       "hashPath": "system.diagnostics.debug.4.3.0.nupkg.sha512"
-    },
-    "System.Diagnostics.DiagnosticSource/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-eIHRELiYDQvsMToML81QFkXEEYXUSUT2F28t1SGrevWqP+epFdw80SyAXIKTXOHrIEXReFOEnEr7XlGiC2GgOg==",
-      "path": "system.diagnostics.diagnosticsource/4.5.0",
-      "hashPath": "system.diagnostics.diagnosticsource.4.5.0.nupkg.sha512"
     },
     "System.Diagnostics.FileVersionInfo/4.3.0": {
       "type": "package",

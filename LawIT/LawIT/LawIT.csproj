@@ -7,10 +7,14 @@
 
   <ItemGroup>
     <PackageReference Include="Google.Cloud.Dialogflow.V2" Version="1.1.0" />
+    <PackageReference Include="Lucene.Net" Version="4.8.0-beta00006" />
+    <PackageReference Include="Lucene.Net.Analysis.Common" Version="4.8.0-beta00006" />
+    <PackageReference Include="Lucene.Net.Queries" Version="4.8.0-beta00006" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+    <PackageReference Include="NEST" Version="7.4.1" />
   </ItemGroup>
 
 </Project>

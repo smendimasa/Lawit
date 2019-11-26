@@ -45,6 +45,18 @@
               "target": "Package",
               "version": "[1.1.0, )"
             },
+            "Lucene.Net": {
+              "target": "Package",
+              "version": "[4.8.0-beta00006, )"
+            },
+            "Lucene.Net.Analysis.Common": {
+              "target": "Package",
+              "version": "[4.8.0-beta00006, )"
+            },
+            "Lucene.Net.Queries": {
+              "target": "Package",
+              "version": "[4.8.0-beta00006, )"
+            },
             "Microsoft.AspNetCore.App": {
               "suppressParent": "All",
               "target": "Package",
@@ -69,6 +81,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[2.2.4, )"
+            },
+            "NEST": {
+              "target": "Package",
+              "version": "[7.4.1, )"
             }
           },
           "imports": [

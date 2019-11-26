@@ -7,6 +7,10 @@ using LawIT.Models.LawITContextModels;
 using Microsoft.EntityFrameworkCore;
 using LawIT.BLL;
 using LawIT.Models.CustomClasses;
+using Lucene.Net.Analysis;
+using Lucene.Net.Util;
+using Lucene.Net.Analysis.Snowball;
+using Lucene.Net.Tartarus.Snowball.Ext;
 
 namespace LawIT.Controllers
 {
@@ -56,10 +60,19 @@ namespace LawIT.Controllers
         {
             var punctuation = input.Where(Char.IsPunctuation).Distinct().ToArray();
             var tokens = input.Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim(punctuation)).Distinct();
-            var cleanedTokens = tokens.Where(x => !Constants.stopwords.Contains(x.ToLower())).ToList();
-            var stemmedTokens = cleanedTokens;
+            var cleanedTokens = tokens.Where(x => !BLL.Constants.stopwords.Contains(x.ToLower())).ToList();
+            var stemmedTokens = new List<string>();
+            PorterStemmer stem = new PorterStemmer();
 
-            var words = new List<string>();
+            foreach (var word in cleanedTokens)
+            {
+                stem.SetCurrent(word);
+                stem.Stem();
+                var result = stem.Current;
+                stemmedTokens.Add(result);
+            }
+            var words = stemmedTokens.Distinct();
+
             // Get all word ids of cleaned token list
             var wordIds = _context.Word.Where(x => words.Contains(x.Word1)).Select(x => x.WordId).ToList();
             // Generate list od DocumentIds based on words and get the top 10
@@ -93,5 +106,6 @@ namespace LawIT.Controllers
             }).ToList();
             return documents;
         }
+
     }
 }

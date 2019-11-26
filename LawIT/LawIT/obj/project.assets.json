@@ -2,6 +2,21 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.2": {
+      "Elasticsearch.Net/7.4.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
+          "System.Reflection.Emit": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Elasticsearch.Net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Elasticsearch.Net.dll": {}
+        }
+      },
       "Google.Api.CommonProtos/1.7.0": {
         "type": "package",
         "dependencies": {
@@ -186,6 +201,42 @@
         },
         "runtime": {
           "lib/netstandard2.0/Grpc.Core.Api.dll": {}
+        }
+      },
+      "Lucene.Net/4.8.0-beta00006": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.4.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Lucene.Net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Lucene.Net.dll": {}
+        }
+      },
+      "Lucene.Net.Analysis.Common/4.8.0-beta00006": {
+        "type": "package",
+        "dependencies": {
+          "Lucene.Net": "4.8.0-beta00006"
+        },
+        "compile": {
+          "lib/netstandard2.0/Lucene.Net.Analysis.Common.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Lucene.Net.Analysis.Common.dll": {}
+        }
+      },
+      "Lucene.Net.Queries/4.8.0-beta00006": {
+        "type": "package",
+        "dependencies": {
+          "Lucene.Net": "4.8.0-beta00006"
+        },
+        "compile": {
+          "lib/netstandard2.0/Lucene.Net.Queries.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Lucene.Net.Queries.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -3030,6 +3081,18 @@
           }
         }
       },
+      "NEST/7.4.1": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "[7.4.1, 8.0.0)"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {}
+        }
+      },
       "NETStandard.Library/2.0.3": {
         "type": "package",
         "dependencies": {
@@ -3588,7 +3651,7 @@
           "ref/netstandard1.3/System.Diagnostics.Debug.dll": {}
         }
       },
-      "System.Diagnostics.DiagnosticSource/4.5.0": {
+      "System.Diagnostics.DiagnosticSource/4.5.1": {
         "type": "package",
         "compile": {
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
@@ -4110,7 +4173,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/System.Reflection.Emit.Lightweight.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.Lightweight.dll": {}
@@ -4910,6 +4973,24 @@
     }
   },
   "libraries": {
+    "Elasticsearch.Net/7.4.1": {
+      "sha512": "A73y3NooG0xS11O6a2bUwYv2TUFkHafbk7Z3C9PwyKmlIq9mBY4H4xtPILQHKcUPI/44bvts1dc4u8talFDy8g==",
+      "type": "package",
+      "path": "elasticsearch.net/7.4.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "elasticsearch.net.7.4.1.nupkg.sha512",
+        "elasticsearch.net.nuspec",
+        "lib/net461/Elasticsearch.Net.dll",
+        "lib/net461/Elasticsearch.Net.pdb",
+        "lib/net461/Elasticsearch.Net.xml",
+        "lib/netstandard2.0/Elasticsearch.Net.dll",
+        "lib/netstandard2.0/Elasticsearch.Net.pdb",
+        "lib/netstandard2.0/Elasticsearch.Net.xml",
+        "license.txt"
+      ]
+    },
     "Google.Api.CommonProtos/1.7.0": {
       "sha512": "RQG8nYUb+B1CKxXqtXBy7Kfj4r0c3mE4itQaFHuLzf7BXPeAOHPRKgU02kemBmuNMeJ+GSK+6D/RrFkjSFxvOA==",
       "type": "package",
@@ -5170,6 +5251,63 @@
         "lib/netstandard2.0/Grpc.Core.Api.dll",
         "lib/netstandard2.0/Grpc.Core.Api.pdb",
         "lib/netstandard2.0/Grpc.Core.Api.xml"
+      ]
+    },
+    "Lucene.Net/4.8.0-beta00006": {
+      "sha512": "x0/Ks0fENj5mkPpxNUIHJvmjlZ5PUfc+O3076kzbYf6NR6sejeIHT5paSn9SJMfqwhEKbwHpJsRkxLInhA0UJw==",
+      "type": "package",
+      "path": "lucene.net/4.8.0-beta00006",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "NOTICE.txt",
+        "lib/net45/Lucene.Net.dll",
+        "lib/net45/Lucene.Net.xml",
+        "lib/netstandard1.6/Lucene.Net.dll",
+        "lib/netstandard1.6/Lucene.Net.xml",
+        "lib/netstandard2.0/Lucene.Net.dll",
+        "lib/netstandard2.0/Lucene.Net.xml",
+        "lucene.net.4.8.0-beta00006.nupkg.sha512",
+        "lucene.net.nuspec"
+      ]
+    },
+    "Lucene.Net.Analysis.Common/4.8.0-beta00006": {
+      "sha512": "XeROES0bwCxCsOVj0T97oH5R4Tubt+ef0K+jkDgIjnGlbMdWwyFGXkDC7tslJOLmpr45Xi2cOrk3Gg8NGGYSIw==",
+      "type": "package",
+      "path": "lucene.net.analysis.common/4.8.0-beta00006",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "NOTICE.txt",
+        "lib/net45/Lucene.Net.Analysis.Common.dll",
+        "lib/net45/Lucene.Net.Analysis.Common.xml",
+        "lib/netstandard1.6/Lucene.Net.Analysis.Common.dll",
+        "lib/netstandard1.6/Lucene.Net.Analysis.Common.xml",
+        "lib/netstandard2.0/Lucene.Net.Analysis.Common.dll",
+        "lib/netstandard2.0/Lucene.Net.Analysis.Common.xml",
+        "lucene.net.analysis.common.4.8.0-beta00006.nupkg.sha512",
+        "lucene.net.analysis.common.nuspec"
+      ]
+    },
+    "Lucene.Net.Queries/4.8.0-beta00006": {
+      "sha512": "WRVDBlzsVVP2jHtnO66BGfjMmMlhDTXAAk8vmLdHF31WPr9xl6VSfR1kPwXhGwWJMSP9eP0GMXkUVS1nV/f16A==",
+      "type": "package",
+      "path": "lucene.net.queries/4.8.0-beta00006",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "NOTICE.txt",
+        "lib/net45/Lucene.Net.Queries.dll",
+        "lib/net45/Lucene.Net.Queries.xml",
+        "lib/netstandard1.6/Lucene.Net.Queries.dll",
+        "lib/netstandard1.6/Lucene.Net.Queries.xml",
+        "lib/netstandard2.0/Lucene.Net.Queries.dll",
+        "lib/netstandard2.0/Lucene.Net.Queries.xml",
+        "lucene.net.queries.4.8.0-beta00006.nupkg.sha512",
+        "lucene.net.queries.nuspec"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -8358,6 +8496,24 @@
         "version.txt"
       ]
     },
+    "NEST/7.4.1": {
+      "sha512": "Rm3L79opLCLT7Ra72ExEbw7Y4AhFIf5OrtpBcMQnkmjT3haYBFnchrv/K6uKh8ES6aAYGg7ndnzIeUmuqAk66g==",
+      "type": "package",
+      "path": "nest/7.4.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net461/Nest.dll",
+        "lib/net461/Nest.pdb",
+        "lib/net461/Nest.xml",
+        "lib/netstandard2.0/Nest.dll",
+        "lib/netstandard2.0/Nest.pdb",
+        "lib/netstandard2.0/Nest.xml",
+        "license.txt",
+        "nest.7.4.1.nupkg.sha512",
+        "nest.nuspec"
+      ]
+    },
     "NETStandard.Library/2.0.3": {
       "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "type": "package",
@@ -9590,10 +9746,10 @@
         "system.diagnostics.debug.nuspec"
       ]
     },
-    "System.Diagnostics.DiagnosticSource/4.5.0": {
-      "sha512": "eIHRELiYDQvsMToML81QFkXEEYXUSUT2F28t1SGrevWqP+epFdw80SyAXIKTXOHrIEXReFOEnEr7XlGiC2GgOg==",
+    "System.Diagnostics.DiagnosticSource/4.5.1": {
+      "sha512": "zCno/m44ymWhgLFh7tELDG9587q0l/EynPM0m4KgLaWQbz/TEKvNRX2YT5ip2qXW/uayifQ2ZqbnErsKJ4lYrQ==",
       "type": "package",
-      "path": "system.diagnostics.diagnosticsource/4.5.0",
+      "path": "system.diagnostics.diagnosticsource/4.5.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -9609,7 +9765,7 @@
         "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.xml",
         "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.dll",
         "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.xml",
-        "system.diagnostics.diagnosticsource.4.5.0.nupkg.sha512",
+        "system.diagnostics.diagnosticsource.4.5.1.nupkg.sha512",
         "system.diagnostics.diagnosticsource.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -13443,11 +13599,15 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Google.Cloud.Dialogflow.V2 >= 1.1.0",
+      "Lucene.Net >= 4.8.0-beta00006",
+      "Lucene.Net.Analysis.Common >= 4.8.0-beta00006",
+      "Lucene.Net.Queries >= 4.8.0-beta00006",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Mvc.Core >= 2.2.5",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.4"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.4",
+      "NEST >= 7.4.1"
     ]
   },
   "packageFolders": {
@@ -13495,6 +13655,18 @@
             "target": "Package",
             "version": "[1.1.0, )"
           },
+          "Lucene.Net": {
+            "target": "Package",
+            "version": "[4.8.0-beta00006, )"
+          },
+          "Lucene.Net.Analysis.Common": {
+            "target": "Package",
+            "version": "[4.8.0-beta00006, )"
+          },
+          "Lucene.Net.Queries": {
+            "target": "Package",
+            "version": "[4.8.0-beta00006, )"
+          },
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
             "target": "Package",
@@ -13519,6 +13691,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[2.2.4, )"
+          },
+          "NEST": {
+            "target": "Package",
+            "version": "[7.4.1, )"
           }
         },
         "imports": [
