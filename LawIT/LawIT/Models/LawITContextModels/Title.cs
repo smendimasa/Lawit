@@ -7,6 +7,7 @@ namespace LawIT.Models.LawITContextModels
     {
         public Title()
         {
+            Document = new HashSet<Document>();
             Subtitle = new HashSet<Subtitle>();
         }
 
@@ -14,6 +15,7 @@ namespace LawIT.Models.LawITContextModels
         public string TitleName { get; set; }
         public string TitleNumber { get; set; }
 
+        public virtual ICollection<Document> Document { get; set; }
         public virtual ICollection<Subtitle> Subtitle { get; set; }
     }
 }

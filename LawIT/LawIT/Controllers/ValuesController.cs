@@ -85,24 +85,25 @@ namespace LawIT.Controllers
 
             if (subtitleId != null)
             {
-                filteredDocs = _context.Document.Where(x => documentIds.Contains(x.DocumentId) && x.SubtitleId == subtitleId).Select(x=> x.DocumentId).ToList();
+                filteredDocs = _context.Document.Where(x => documentIds.Contains(x.DocumentId) && x.SubtitleId.HasValue && x.SubtitleId.Value == subtitleId).Select(x=> x.DocumentId).ToList();
                     
             }
             else if (titleId != null)
             {
-                filteredDocs = _context.Document.Where(x => documentIds.Contains(x.DocumentId) && x.Subtitle.TitleId == titleId).Select(x => x.DocumentId).ToList();
+                filteredDocs = _context.Document.Where(x => documentIds.Contains(x.DocumentId) && x.TitleId == titleId).Select(x => x.DocumentId).ToList();
             }
             else
             {
                 filteredDocs = _context.Document.Where(x => documentIds.Contains(x.DocumentId)).ToList().Select(x => x.DocumentId).ToList();
             }
-            List<DocumentResult> documents = _context.Document.Where(x=> filteredDocs.Contains(x.DocumentId)).Include(i => i.Subtitle).ThenInclude(j => j.Title).Select(y => new DocumentResult
+            var subtitles = _context.Subtitle.Select(x => new { x.SubtitleId, x.SubtitleName, x.SubtitleNumber }).ToDictionary(x => x.SubtitleId, x => new { x.SubtitleName, x.SubtitleNumber});
+            List<DocumentResult> documents = _context.Document.Where(x=> filteredDocs.Contains(x.DocumentId)).Include(j => j.Title).Select(y => new DocumentResult
             {
                 DocumentText = y.DocumentText,
-                SubtitleName = y.Subtitle.SubtitleName,
-                SubtitleNumber = y.Subtitle.SubtitleNumber,
-                TitleName = y.Subtitle.Title.TitleName,
-                TitleNumber = y.Subtitle.Title.TitleNumber
+                SubtitleName = y.SubtitleId.HasValue ? subtitles[y.SubtitleId.Value].SubtitleName : "",
+                SubtitleNumber = y.SubtitleId.HasValue ? subtitles[y.SubtitleId.Value].SubtitleNumber : "",
+                TitleName = y.Title.TitleName,
+                TitleNumber = y.Title.TitleNumber
             }).ToList();
             return documents;
         }

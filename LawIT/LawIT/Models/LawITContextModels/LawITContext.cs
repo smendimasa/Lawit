@@ -36,16 +36,19 @@ namespace LawIT.Models.LawITContextModels
 
             modelBuilder.Entity<Document>(entity =>
             {
-                entity.Property(e => e.DocumentText)
-                    .IsRequired()
+                entity.Property(e => e.DocumentHeader)
                     .HasMaxLength(5000)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.Subtitle)
+                entity.Property(e => e.UniversalCitation)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.Title)
                     .WithMany(p => p.Document)
-                    .HasForeignKey(d => d.SubtitleId)
+                    .HasForeignKey(d => d.TitleId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Document_Subtitle");
+                    .HasConstraintName("FK_Document_Title");
             });
 
             modelBuilder.Entity<DocumentWord>(entity =>
