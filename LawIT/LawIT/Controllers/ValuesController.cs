@@ -59,8 +59,8 @@ namespace LawIT.Controllers
         public List<DocumentResult> Search(string input, int? subtitleId, int? titleId)
         {
             var punctuation = input.Where(Char.IsPunctuation).Distinct().ToArray();
-            var tokens = input.Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim(punctuation)).Distinct();
-            var cleanedTokens = tokens.Where(x => !BLL.Constants.stopwords.Contains(x.ToLower())).ToList();
+            var tokens = input.Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim(punctuation)).Select(x => x.ToLower()).Distinct();
+            var cleanedTokens = tokens.Where(x => !BLL.Constants.stopwords.Contains(x)).ToList();
             var stemmedTokens = new List<string>();
             PorterStemmer stem = new PorterStemmer();
 
