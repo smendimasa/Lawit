@@ -58,19 +58,23 @@ namespace LawIT.Controllers
 
         public List<DocumentResult> Search(string input, int? subtitleId, int? titleId)
         {
-            var punctuation = input.Where(Char.IsPunctuation).Distinct().ToArray();
-            var tokens = input.Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim(punctuation)).Select(x => x.ToLower()).Distinct();
-            var cleanedTokens = tokens.Where(x => !BLL.Constants.stopwords.Contains(x)).ToList();
+            //  Take the input, split up into words while discarding symbols and numbers, then remove the stop words and set all cases to lowercase
+            var tokens = input.Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(x => x.Where(c => char.IsLetter(c)).Aggregate("", (current, c) => current + c))
+                .Select(x => x.ToLower()).Distinct()
+                .Where(x => !BLL.Constants.stopwords.Contains(x));
             var stemmedTokens = new List<string>();
+            // Instantiate the stemmer
             PorterStemmer stem = new PorterStemmer();
-
-            foreach (var word in cleanedTokens)
+            // Stem all the words in the input and add to the list
+            foreach (var word in tokens)
             {
                 stem.SetCurrent(word);
                 stem.Stem();
                 var result = stem.Current;
                 stemmedTokens.Add(result);
             }
+            // just in case some words have common stems, we apply the Distinct filter again
             var words = stemmedTokens.Distinct();
 
             // Get all word ids of cleaned token list
