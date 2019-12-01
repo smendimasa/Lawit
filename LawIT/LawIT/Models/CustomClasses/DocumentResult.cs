@@ -8,6 +8,8 @@ namespace LawIT.Models.CustomClasses
     public class DocumentResult
     {
         public string DocumentText { get; set; }
+        public string DocumentHeader { get; set; }
+        public string Citation { get; set; }
         public string SubtitleName { get; set; }
         public string SubtitleNumber { get; set; }
         public string TitleName { get; set; }

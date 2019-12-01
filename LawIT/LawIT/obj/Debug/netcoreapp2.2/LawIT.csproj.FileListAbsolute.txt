@@ -13,4 +13,3 @@ C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\obj\Debug\netcoreapp2.2\LawIT.
 C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\obj\Debug\netcoreapp2.2\LawIT.RazorTargetAssemblyInfo.cache
 C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\obj\Debug\netcoreapp2.2\LawIT.dll
 C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\obj\Debug\netcoreapp2.2\LawIT.pdb
-C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\obj\Debug\netcoreapp2.2\LawIT.csprojAssemblyReference.cache

@@ -1,0 +1,16 @@
+C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\bin\Release\netcoreapp2.2\appsettings.Development.json
+C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\bin\Release\netcoreapp2.2\appsettings.json
+C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\bin\Release\netcoreapp2.2\Properties\launchSettings.json
+C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\bin\Release\netcoreapp2.2\LawIT.deps.json
+C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\bin\Release\netcoreapp2.2\LawIT.runtimeconfig.json
+C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\bin\Release\netcoreapp2.2\LawIT.runtimeconfig.dev.json
+C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\bin\Release\netcoreapp2.2\LawIT.dll
+C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\bin\Release\netcoreapp2.2\LawIT.pdb
+C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\obj\Release\netcoreapp2.2\LawIT.csprojAssemblyReference.cache
+C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\obj\Release\netcoreapp2.2\LawIT.RazorAssemblyInfo.cache
+C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\obj\Release\netcoreapp2.2\LawIT.RazorAssemblyInfo.cs
+C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\obj\Release\netcoreapp2.2\LawIT.AssemblyInfoInputs.cache
+C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\obj\Release\netcoreapp2.2\LawIT.AssemblyInfo.cs
+C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\obj\Release\netcoreapp2.2\LawIT.RazorTargetAssemblyInfo.cache
+C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\obj\Release\netcoreapp2.2\LawIT.dll
+C:\Users\janre\Documents\GitHub\Lawit\LawIT\LawIT\obj\Release\netcoreapp2.2\LawIT.pdb
