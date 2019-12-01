@@ -13,13 +13,12 @@ namespace LawIT.BLL
     {
         private static readonly LawITContext _context = new LawITContext();
 
-        public static List<DocumentResult> Search(string input, int? titleId)
+        public static List<DocumentResult> Search(string input)
         {
             //  Take the input, split up into words while discarding symbols and numbers, then remove the stop words and set all cases to lowercase
             var tokens = input.Split(" ", StringSplitOptions.RemoveEmptyEntries)
-                .Select(x => x.Where(c => char.IsLetter(c)).Aggregate("", (current, c) => current + c))
-                .Select(x => x.ToLower()).Distinct()
-                .Where(x => !BLL.Constants.stopwords.Contains(x));
+                .Select(x => (x.Where(c => char.IsLetter(c)).Aggregate("", (current, c) => current + c)).ToLower());
+            tokens = tokens.Where(x => !BLL.Constants.stopwords.Contains(x)).Distinct();
             var stemmedTokens = new List<string>();
             // Instantiate the stemmer
             PorterStemmer stem = new PorterStemmer();
@@ -33,31 +32,21 @@ namespace LawIT.BLL
             }
             // just in case some words have common stems, we apply the Distinct filter again
             var words = stemmedTokens.Distinct();
-
             // Get all word ids of cleaned token list
             var wordIds = _context.Word.Where(x => words.Contains(x.Word1)).Select(x => x.WordId).ToList();
             // Generate list od DocumentIds based on words and get the top 10
-            var documentIds = _context.DocumentWord.Where(x => wordIds.Contains(x.WordId)).GroupBy(g => g.DocumentId).Select(y => new
+            var pull = _context.DocumentWord.ToList();
+            var svd = pull.Where(x => wordIds.Contains(x.WordId));
+            var totalcounts = _context.DocumentWord.ToList().GroupBy(g => g.DocumentId).ToDictionary(x => x.Key, x => x.Sum(z => z.Count));
+            var counts = svd.GroupBy(g => g.DocumentId).Select(y => new
             {
                 DocumentId = y.Key,
-                Counts = y.Sum(x => x.Count)
-            }).OrderByDescending(c => c.Counts).Take(10).Select(x => x.DocumentId).ToList();
-            List<int> filteredDocs = new List<int>();
+                Counts = totalcounts[y.Key] != 0 ? y.Sum(z=> z.Count) / totalcounts[y.Key] : 0
+            });
 
-            //if (subtitleId != null)
-            //{
-            //    filteredDocs = _context.Document.Where(x => documentIds.Contains(x.DocumentId) && x.SubtitleId.HasValue && x.SubtitleId.Value == subtitleId).Select(x=> x.DocumentId).ToList();
-
-            //}
-            //else 
-            if (titleId != null)
-            {
-                filteredDocs = _context.Document.Where(x => documentIds.Contains(x.DocumentId) && x.TitleId == titleId).Select(x => x.DocumentId).ToList();
-            }
-            else
-            {
-                filteredDocs = _context.Document.Where(x => documentIds.Contains(x.DocumentId)).ToList().Select(x => x.DocumentId).ToList();
-            }
+            var top10 = counts.OrderByDescending(c => c.Counts).Take(10);
+            var documentIds = top10.Select(x => x.DocumentId).ToList();
+            List<int> filteredDocs = _context.Document.Where(x => documentIds.Contains(x.DocumentId)).ToList().Select(x => x.DocumentId).ToList();
             var subtitles = _context.Subtitle.Select(x => new { x.SubtitleId, x.SubtitleName, x.SubtitleNumber }).ToDictionary(x => x.SubtitleId, x => new { x.SubtitleName, x.SubtitleNumber });
             List<DocumentResult> documents = _context.Document.Where(x => filteredDocs.Contains(x.DocumentId)).Include(j => j.Title).Select(y => new DocumentResult
             {

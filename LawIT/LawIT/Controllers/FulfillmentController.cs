@@ -38,18 +38,12 @@ namespace LawIT.Controllers
             {
                 request = jsonParser.Parse<WebhookRequest>(reader);
             }
-            double? titleId = null;
             var inputString = request.QueryResult.QueryText;
             List<DocumentResult> documents = new List<DocumentResult>();
-            if (request.QueryResult.Action == "title")
-            {
-                //Parse the intent params
-                var requestParameters = request.QueryResult.Parameters;
-                titleId = requestParameters.Fields["title"].NumberValue;
-            }
+
             if(inputString.Trim() != "")
             {
-                documents = Helpers.Search(inputString, titleId.HasValue ? (int)titleId.Value : (int?)null);
+                documents = Helpers.Search(inputString);
             }
             var firstdocument = documents.FirstOrDefault();
             string responseText = firstdocument != null ? Helpers.ResponseBuilder(firstdocument) : "Sorry, I could not find a relevant document.";
